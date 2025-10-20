@@ -1,0 +1,141 @@
+{
+  "nmap": {
+    "command_line": "/usr/lib/nmap/nmap --privileged -oX - -p 21,22,23,80,139,445,443,2121,3306,5432 -sV 192.168.56.101",
+    "scaninfo": {
+      "tcp": {
+        "method": "syn",
+        "services": "21-23,80,139,443,445,2121,3306,5432"
+      }
+    },
+    "scanstats": {
+      "timestr": "Sun Oct 19 21:42:15 2025",
+      "elapsed": "24.42",
+      "uphosts": "1",
+      "downhosts": "0",
+      "totalhosts": "1"
+    }
+  },
+  "scan": {
+    "192.168.56.101": {
+      "hostnames": [
+        {
+          "name": "",
+          "type": ""
+        }
+      ],
+      "addresses": {
+        "ipv4": "192.168.56.101",
+        "mac": "08:00:27:70:0F:05"
+      },
+      "vendor": {
+        "08:00:27:70:0F:05": "PCS Systemtechnik/Oracle VirtualBox virtual NIC"
+      },
+      "status": {
+        "state": "up",
+        "reason": "arp-response"
+      },
+      "tcp": {
+        "21": {
+          "state": "open",
+          "reason": "syn-ack",
+          "name": "ftp",
+          "product": "vsftpd",
+          "version": "2.3.4",
+          "extrainfo": "",
+          "conf": "10",
+          "cpe": "cpe:/a:vsftpd:vsftpd:2.3.4"
+        },
+        "22": {
+          "state": "open",
+          "reason": "syn-ack",
+          "name": "ssh",
+          "product": "OpenSSH",
+          "version": "4.7p1 Debian 8ubuntu1",
+          "extrainfo": "protocol 2.0",
+          "conf": "10",
+          "cpe": "cpe:/o:linux:linux_kernel"
+        },
+        "23": {
+          "state": "open",
+          "reason": "syn-ack",
+          "name": "telnet",
+          "product": "Linux telnetd",
+          "version": "",
+          "extrainfo": "",
+          "conf": "10",
+          "cpe": "cpe:/o:linux:linux_kernel"
+        },
+        "80": {
+          "state": "open",
+          "reason": "syn-ack",
+          "name": "http",
+          "product": "Apache httpd",
+          "version": "2.2.8",
+          "extrainfo": "(Ubuntu) DAV/2",
+          "conf": "10",
+          "cpe": "cpe:/a:apache:http_server:2.2.8"
+        },
+        "139": {
+          "state": "open",
+          "reason": "syn-ack",
+          "name": "netbios-ssn",
+          "product": "Samba smbd",
+          "version": "3.X - 4.X",
+          "extrainfo": "workgroup: WORKGROUP",
+          "conf": "10",
+          "cpe": "cpe:/a:samba:samba"
+        },
+        "443": {
+          "state": "closed",
+          "reason": "reset",
+          "name": "https",
+          "product": "",
+          "version": "",
+          "extrainfo": "",
+          "conf": "3",
+          "cpe": ""
+        },
+        "445": {
+          "state": "open",
+          "reason": "syn-ack",
+          "name": "netbios-ssn",
+          "product": "Samba smbd",
+          "version": "3.X - 4.X",
+          "extrainfo": "workgroup: WORKGROUP",
+          "conf": "10",
+          "cpe": "cpe:/a:samba:samba"
+        },
+        "2121": {
+          "state": "open",
+          "reason": "syn-ack",
+          "name": "ftp",
+          "product": "ProFTPD",
+          "version": "1.3.1",
+          "extrainfo": "",
+          "conf": "10",
+          "cpe": "cpe:/a:proftpd:proftpd:1.3.1"
+        },
+        "3306": {
+          "state": "open",
+          "reason": "syn-ack",
+          "name": "mysql",
+          "product": "MySQL",
+          "version": "5.0.51a-3ubuntu5",
+          "extrainfo": "",
+          "conf": "10",
+          "cpe": "cpe:/a:mysql:mysql:5.0.51a-3ubuntu5"
+        },
+        "5432": {
+          "state": "open",
+          "reason": "syn-ack",
+          "name": "postgresql",
+          "product": "PostgreSQL DB",
+          "version": "8.3.0 - 8.3.7",
+          "extrainfo": "",
+          "conf": "10",
+          "cpe": "cpe:/a:postgresql:postgresql:8.3"
+        }
+      }
+    }
+  }
+}

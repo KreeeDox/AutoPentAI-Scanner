@@ -1,0 +1,106 @@
+/* AutoPentAI Styles */
+body { font-family: 'Arial', sans-serif; background-color: #1a1a2e; color: #e0e0e0; margin: 0; padding: 20px; }
+.container { max-width: 1200px; margin: 0 auto; background-color: #2a2a4a; padding: 20px; border-radius: 8px; box-shadow: 0 0 15px rgba(0, 0, 0, 0.5); }
+h1, h2, h3, h4, h5, h6 { color: #00bcd4; }
+.header { text-align: center; margin-bottom: 30px; }
+.header h1 { color: #e0e0e0; margin-bottom: 5px; }
+.header p { color: #888; font-style: italic; }
+
+/* Input & Control Section */
+.input-section { display: flex; gap: 10px; margin-bottom: 20px; }
+.input-section input[type="text"] { flex-grow: 1; padding: 10px; border: 1px solid #00bcd4; border-radius: 5px; background-color: #3a3a5a; color: #e0e0e0; font-size: 16px; }
+.input-section button { padding: 10px 20px; background-color: #00bcd4; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 16px; transition: background-color 0.3s ease; }
+.input-section button:hover { background-color: #0097a7; }
+.control-buttons { display: flex; gap: 10px; margin-top: 15px; justify-content: flex-end; }
+.control-buttons button { background-color: #f57c00; }
+.control-buttons button:hover { background-color: #ef6c00; }
+
+/* Dashboard Sections */
+.dashboard-section { background-color: #3a3a5a; padding: 20px; border-radius: 8px; margin-top: 20px; }
+.dashboard-section h3 { margin-top: 0; color: #00bcd4; }
+
+/* Risk Analysis */
+.risk-analysis { display: flex; flex-direction: column; align-items: center; text-align: center; }
+.risk-analysis .chart-container { width: 200px; height: 200px; margin: 20px auto; position: relative; }
+.risk-analysis .chart-overlay { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); color: #e0e0e0; font-size: 1.1em; font-weight: bold; }
+.risk-analysis .prediction-text { font-size: 1.2em; margin-bottom: 10px; }
+.risk-analysis .legend { display: flex; flex-direction: column; align-items: flex-start; margin-top: 10px; }
+.risk-analysis .legend-item { display: flex; align-items: center; margin-bottom: 5px; }
+.risk-analysis .legend-color { width: 15px; height: 15px; margin-right: 8px; border-radius: 3px; }
+
+/* Nmap Report & Status */
+.nmap-report-section { background-color: #3a3a5a; padding: 20px; border-radius: 8px; margin-top: 20px; }
+.nmap-report-section h3 { margin-top: 0; color: #00bcd4; }
+.nmap-report-content { white-space: pre-wrap; background-color: #2a2a4a; padding: 15px; border-radius: 5px; max-height: 400px; overflow-y: auto; color: #c0c0c0; border: 1px solid #555; }
+
+/* General Status & Progress */
+.status-area { margin-top: 20px; padding: 15px; border-radius: 8px; background-color: #4a4a6a; color: #e0e0e0; font-size: 1.1em; }
+.status-message { margin-bottom: 10px; }
+.progress-bar-container { width: 100%; background-color: #555; border-radius: 5px; height: 25px; overflow: hidden; margin-top: 10px; }
+.progress-bar { height: 100%; width: 0%; background-color: #00bcd4; text-align: center; line-height: 25px; color: white; font-weight: bold; transition: width 0.5s ease-in-out; white-space: nowrap; }
+
+/* Recommendations */
+.recommendations-section { background-color: #3a3a5a; padding: 20px; border-radius: 8px; margin-top: 20px; }
+.recommendations-section h3 { margin-top: 0; color: #00bcd4; }
+.recommendations-list { list-style-type: disc; margin-left: 20px; color: #c0c0c0; }
+.recommendations-list li { margin-bottom: 8px; }
+
+/* Error Handling */
+.error-message { color: #ff5252; font-weight: bold; margin-top: 15px; text-align: center; }
+
+/* Layout for two main columns */
+.main-content { display: flex; gap: 20px; margin-top: 20px; }
+.left-panel { flex: 1; display: flex; flex-direction: column; }
+.right-panel { flex: 1; display: flex; flex-direction: column; }
+
+/* Dashboard components arrangement */
+#dashboard {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two columns */
+    gap: 20px;
+}
+
+#risk-analysis-card, #nmap-report-card {
+    background-color: #3a3a5a;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 0; /* Remove top margin */
+    min-height: 250px; /* Ensure cards have some height */
+}
+
+#web-scan-findings-card, #recommendations-card {
+    grid-column: span 2; /* Make these span both columns */
+    background-color: #3a3a5a;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 0; /* Remove top margin */
+}
+
+/* Adjust specific elements inside cards */
+#risk-analysis-card h3, #nmap-report-card h3,
+#web-scan-findings-card h3, #recommendations-card h3 {
+    margin-top: 0;
+    color: #00bcd4;
+}
+
+#nmap-report-content, #web-scan-findings-content {
+    white-space: pre-wrap;
+    background-color: #2a2a4a;
+    padding: 15px;
+    border-radius: 5px;
+    max-height: 250px; /* Adjusted max-height */
+    overflow-y: auto;
+    color: #c0c0c0;
+    border: 1px solid #555;
+}
+
+/* Adjust chart container if needed */
+#chart-container {
+    width: 180px; /* Slightly smaller */
+    height: 180px;
+    margin: 10px auto;
+    position: relative;
+}
+
+/* Footer */
+.footer { text-align: center; margin-top: 30px; font-size: 0.9em; color: #888; }

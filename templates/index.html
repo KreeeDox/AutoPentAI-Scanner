@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoPentAI - Pro Dashboard</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;700&display=swap" rel="stylesheet">
+    <script src="/static/chart.js"></script>
+
+    <style>
+        :root {
+            --bg-color: #0d1117; --primary-glow: #00bfff; --secondary-glow: #00ff9c;
+            --border-color: #00bfff; --card-bg: #161b22; --text-color: #c9d1d9; --text-muted: #8b949e;
+        }
+        body { background-color: var(--bg-color); color: var(--text-color); font-family: 'Roboto Mono', monospace; padding: 2rem; }
+        * { box-sizing: border-box; margin: 0; padding: 0; } /* Reset */
+        .container { max-width: 1200px; margin: auto; }
+        .header { text-align: center; margin-bottom: 2rem; }
+        .header h1 { color: var(--primary-glow); font-weight: 700; text-shadow: 0 0 10px var(--primary-glow); animation: pulse-glow 2.5s infinite ease-in-out; }
+        .header .lab-badge { background-color: #ff4757; color: #fff; padding: .2rem .5rem; border-radius: 5px; font-size: .8rem; margin-left: 10px; }
+        .card { background-color: var(--card-bg); border: 1px solid var(--border-color); border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; box-shadow: 0 0 15px rgba(0,191,255,.3); overflow: hidden; /* Added overflow hidden */ }
+        .form-control { background-color: #010409; border: 1px solid var(--border-color); color: var(--text-color); font-family: 'Roboto Mono', monospace; }
+        .btn { font-weight: 700; border: none; border-radius: 5px; padding: .75rem 1.5rem; transition: all .2s ease-in-out; cursor: pointer; }
+        .btn-primary { background-color: var(--secondary-glow); color: var(--bg-color); }
+        .btn-primary:hover { box-shadow: 0 0 15px var(--secondary-glow); transform: translateY(-2px); }
+        .btn-secondary { background-color: #30363d; color: var(--text-color); }
+        #nmap-report-area { 
+            background-color: #010409; padding: 1rem; border-radius: 5px; max-height: 400px; 
+            overflow-y: auto; white-space: pre-wrap; font-size: .9rem; 
+            border-left: 3px solid var(--secondary-glow);
+            /* Styles for fill animation */
+            background: linear-gradient(90deg, var(--secondary-glow), var(--primary-glow)); 
+            background-size: 100% 100%; 
+            background-position: -100% 0; 
+            background-repeat: no-repeat;
+            color: transparent; /* Hide text initially */
+            transition: background-position 20s linear, color 0.1s linear 0.1s; /* Transition for fill and text visibility */
+        }
+        #nmap-report-area.scanning {
+            background-position: 0% 0; /* Fill the background */
+            color: var(--text-color); /* Make text visible during scan */
+             -webkit-background-clip: text; /* Clip background to text */
+             -webkit-text-fill-color: transparent; /* Make text transparent */
+             background-clip: text;
+             text-fill-color: transparent; /* Standard property */
+        }
+        @keyframes pulse-glow { 0%{text-shadow:0 0 10px var(--primary-glow)} 50%{text-shadow:0 0 20px var(--primary-glow),0 0 30px var(--primary-glow)} 100%{text-shadow:0 0 10px var(--primary-glow)} }
+        .progress-bar-container { width: 100%; height: 30px; background-color: #010409; border: 1px solid var(--border-color); border-radius: 5px; overflow: hidden; display: none; margin-top: 2rem; }
+        .progress-bar-fill { height: 100%; width: 100%; background: linear-gradient(90deg, var(--secondary-glow), var(--primary-glow)); transform: translateX(-100%); }
+        .progress-bar-fill.scanning { animation: scanning-progress 20s linear forwards; }
+        .nmap-progress-bar-container { width: 100%; height: 10px; background-color: #010409; border: 1px solid var(--border-color); border-radius: 5px; overflow: hidden; display: none; margin-bottom: 1rem; }
+        .nmap-progress-bar-fill { height: 100%; width: 100%; background: linear-gradient(90deg, var(--secondary-glow), var(--primary-glow)); transform: translateX(-100%); }
+        .nmap-progress-bar-fill.scanning { animation: scanning-progress 20s linear forwards; }
+        @keyframes scanning-progress { 0%{transform:translateX(-100%)} 100%{transform:translateX(0%)} }
+
+         /* Fix for the scanning text overflow */
+        #scanning-text {
+            overflow: hidden;      /* Hide overflow */
+            white-space: nowrap;   /* Prevent wrapping */
+            text-overflow: ellipsis; /* Add "..." if too long */
+        }
+/* ... other CSS rules ... */
+
+    /* Fix for the scanning text overflow */
+    #scanning-text {
+        overflow: hidden;      /* Hide content that exceeds the element's box */
+        white-space: nowrap;   /* Prevent the text from wrapping to the next line */
+        text-overflow: ellipsis; /* Display "..." if the text is clipped */
+    }
+#nmap-report-area {
+    /* ... existing styles ... */
+    background: linear-gradient(90deg, var(--secondary-glow), var(--primary-glow)); /* Gradient fill */
+    background-size: 100% 100%; /* Ensure gradient covers full area */
+    background-position: -100% 0; /* Start gradient completely off-screen to the left */
+    background-repeat: no-repeat; /* Don't repeat the gradient */
+    transition: background-position 20s linear; /* Smooth animation over 20 seconds */
+    /* Add this line if not present to ensure text is visible over background */
+    -webkit-background-clip: text; /* Clip background to text (for text effect) */
+    -webkit-text-fill-color: transparent; /* Make text color transparent */
+    background-clip: text;
+    text-fill-color: transparent;
+    color: var(--text-color); /* Fallback or initial text color */
+}
+/* This class will be added by JS to trigger the fill animation */
+#nmap-report-area.scanning {
+    background-position: 0% 0; /* Move gradient to fill the area */
+    -webkit-text-fill-color: var(--text-color); /* Make text visible during animation */
+    text-fill-color: var(--text-color);
+}
+
+</style>
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header"><h1>AutoPentAI <span class="lab-badge">LAB-ONLY</span></h1><p style="color: var(--text-muted);">AI-Powered Vulnerability Assessment Dashboard</p></div>
+        <div class="card"><div style="display: flex; gap: 1rem; align-items: center;"><input type="text" class="form-control" id="target" value="192.168.56.101"><button id="scan-button" class="btn btn-primary">Start Scan</button></div><div style="display: flex; gap: 1rem; margin-top: 1rem;"><a id="history-button" href="/history" class="btn btn-secondary" style="flex-grow: 1;">Scan History</a><a id="report-button" href="/report" class="btn btn-secondary disabled" style="flex-grow: 1;">Download PDF Report</a></div></div>
+        <div class="card">
+            <div style="display: grid; grid-template-columns: 1fr 2fr; gap: 2rem;">
+                <div>
+                    <h4 style="color: var(--primary-glow);">Risk Analysis</h4>
+                    <canvas id="riskChart"></canvas>
+                    <div id="scanning-progress-bar" class="progress-bar-container"><div id="progress-bar-anim" class="progress-bar-fill"></div></div>
+                    <p id="scanning-text" style="display: none; text-align: center; color: var(--text-muted); margin-top: 10px;">Scanning... Nmap & Nikto running...</p>
+                    <div id="nikto-results-area" style="margin-top: 1rem; display: none;"><h5 style="color: var(--secondary-glow);">Web Scan Findings:</h5><p id="nikto-summary" style="color: var(--text-muted);"></p></div>
+                </div>
+                <div>
+                    <h4 style="color: var(--primary-glow);">Nmap Report</h4>
+                    <div id="nmap-progress-bar" class="nmap-progress-bar-container"><div id="nmap-bar-anim" class="nmap-progress-bar-fill"></div></div>
+                    <pre id="nmap-report-area"></pre> </div>
+            </div>
+            <div id="error-area" style="color: #ff4757; margin-top: 1rem; display: none;"></div>
+            <div id="recommendations-area" style="margin-top: 2rem; display: none;"><h4 style="color: var(--primary-glow);">Recommendations:</h4><ul id="recommendations-list" style="color: var(--text-muted); padding-left: 20px;"></ul></div>
+            <div style="text-align: center; margin-top: 2rem; color: var(--text-muted); font-size: 0.8rem;">Project designed and built by Krishna</div>
+        </div>
+    </div>
+    <script src="/static/script.js"></script>
+</body>
+</html>

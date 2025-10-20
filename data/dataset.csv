@@ -1,0 +1,9 @@
+critical_risk_count,high_risk_count,medium_risk_count,nikto_vuln_count,risk_label
+1,0,0,0,Critical_Risk
+0,1,1,0,High_Risk
+0,0,1,0,Medium_Risk
+0,0,0,0,Low_Risk
+2,4,1,15,Compromised_Host_Full
+1,2,0,5,Critical_Web_Risk
+0,2,2,10,High_Web_Risk
+0,0,0,1,Low_Web_Risk

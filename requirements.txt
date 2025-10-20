@@ -1,0 +1,6 @@
+flask
+python-nmap
+pandas
+scikit-learn
+joblib
+fpdf

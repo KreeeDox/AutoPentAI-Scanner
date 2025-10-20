@@ -1,0 +1,7 @@
+# LAB-ONLY: This file sets up our local vulnerable target.
+version: '3.8'
+services:
+  vulnerable_app:
+    image: bkimminich/juice-shop
+    ports:
+      - "3000:3000"

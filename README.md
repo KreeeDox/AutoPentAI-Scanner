@@ -1,3 +1,4 @@
+
 # AutoPentAI (Lab-Only Version)
 
 This is an educational project demonstrating a simple pipeline for:
@@ -15,3 +16,4 @@ It is hard-coded to reject any target other than `127.0.0.1` or `localhost`.
 2.  Install Python packages: `pip install -r requirements.txt`
 3.  Run the one-click start script: `./start.sh`
 4.  Access the UI at: `http://127.0.0.1:5001`
+

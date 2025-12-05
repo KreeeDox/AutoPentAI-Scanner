@@ -56,14 +56,15 @@ Designed for **virtual lab environments** such as Metasploitable2, DVWA, Juice S
 
 ```mermaid
 flowchart TD
-    A[User Input (Target IP)] --> B[Flask Backend API]
-    B --> C[Nmap Scan (Ports/Services)]
-    B --> D[Nikto Scan (Web Vulns)]
-    C --> E[Feature Extractor → parse Nmap output]
+    A["User Input (Target IP)"] --> B["Flask Backend API"]
+    B --> C["Nmap Scan (Ports / Services)"]
+    B --> D["Nikto Scan (Web Vulns)"]
+    C --> E["Feature Extractor (Parse Nmap Output)"]
     D --> E
-    E --> F[RandomForest Model → Risk + Confidence]
-    F --> G[Dashboard View → Risk + Nmap + Nikto]
-    G --> H[PDF Report Export + SQLite History]
+    E --> F["RandomForest Model (Risk + Confidence)"]
+    F --> G["Dashboard View (Risk + Nmap + Nikto)"]
+    G --> H["PDF Export + SQLite History"]
+```
 
 
 🛠 Installation (Kali/Ubuntu)

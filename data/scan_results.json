@@ -8,8 +8,8 @@
       }
     },
     "scanstats": {
-      "timestr": "Sun Oct 19 21:42:15 2025",
-      "elapsed": "24.42",
+      "timestr": "Fri Dec  5 21:28:46 2025",
+      "elapsed": "12.62",
       "uphosts": "1",
       "downhosts": "0",
       "totalhosts": "1"
@@ -24,15 +24,12 @@
         }
       ],
       "addresses": {
-        "ipv4": "192.168.56.101",
-        "mac": "08:00:27:70:0F:05"
+        "ipv4": "192.168.56.101"
       },
-      "vendor": {
-        "08:00:27:70:0F:05": "PCS Systemtechnik/Oracle VirtualBox virtual NIC"
-      },
+      "vendor": {},
       "status": {
         "state": "up",
-        "reason": "arp-response"
+        "reason": "reset"
       },
       "tcp": {
         "21": {
@@ -86,8 +83,8 @@
           "cpe": "cpe:/a:samba:samba"
         },
         "443": {
-          "state": "closed",
-          "reason": "reset",
+          "state": "filtered",
+          "reason": "no-response",
           "name": "https",
           "product": "",
           "version": "",

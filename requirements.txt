@@ -4,3 +4,4 @@ pandas
 scikit-learn
 joblib
 fpdf
+Flask-SQLAlchemy==3.1.1

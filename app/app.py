@@ -207,6 +207,16 @@ def generate_report():
             txt=f"Nikto web vulns detected: {last_nikto_count}",
             ln=True,
         )
+        pdf.ln(3)
+        pdf.set_font("Arial", "B", 12)
+        pdf.cell(200, 8, txt="Risk Severity Reference", ln=True)
+        pdf.set_font("Arial", size=10)
+        pdf.cell(200, 6, txt="Critical : CVSS 9.0 - 10.0", ln=True)
+        pdf.cell(200, 6, txt="High     : CVSS 7.0 - 8.9", ln=True)
+        pdf.cell(200, 6, txt="Medium   : CVSS 4.0 - 6.9", ln=True)
+        pdf.cell(200, 6, txt="Low      : CVSS 0.1 - 3.9", ln=True)
+
+        pdf.ln(4)
         pdf.ln(6)
 
         # Port table
@@ -242,7 +252,7 @@ def generate_report():
         return send_file(
             os.path.abspath(report_filename),
             as_attachment=True,
-            download_name="AutoPentAI_Report.pdf",
+            download_name="AutoPentAI_Vulnerability_Assessment_Report.pdf",
         )
     except Exception as e:
         print(f"Error generating PDF: {e}")
